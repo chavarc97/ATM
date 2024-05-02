@@ -2,60 +2,36 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-This project is an ATM machine simulation.
-The user can create an account, deposit money, withdraw money, check balance, and exit the program.
+// Define structures
+typedef struct {
+    char username[50];
+    char house[20];
+    int account_id; // Unique account identifier
+    // Other account-related information can be added here
+} User;
 
-    * The user can create an account by entering their name, age, and initial deposit amount.
-    * The user can deposit money by entering the amount they want to deposit.
-    * The user can withdraw money by entering the amount they want to withdraw.
-    * The user can check their balance.
-    * The user can see the transaction history.
-    * The user can exit the program.
-
-    * We'll use a structure to store the user's information.
-    * We'll use a linked list to store the transaction history.
-    * We'll use a switch statement to handle the user's input.
-    * We'll use a while loop to keep the program running until the user exits.
-    * We'll use functions to handle the user's input.
-    * We'll use our own library to handle the linked list.
-    * We'll use a file to store the user's information.
-    * We'll use a file to store the transaction history.
-    * We'll use a file to store the user's account balance.
-
- */
-typedef struct
-{
-    char name[50];
-    int age;
-    float balance;
+typedef struct {
+    User account_id;
+    float balance_galleon; // Balance in ʛ
+    float balance_usd; // Balance in USD
 } Account;
 
-typedef struct
-{
-    char date[50];
-    char time[50];
-    char type[50];
-    float amount;
+typedef struct {
+    char currency_code[4];
+    float exchange_rate; // Exchange rate to USD
+} Currency;
+
+typedef struct {
+    int transaction_id; // Unique transaction identifier
+    User account_id; // Account identifier
+    char transaction_type[10]; // Deposit or Withdraw
+    float amount; // Amount in ʛ
+    Currency currency_code[4]; // Currency code
+    Currency exchange_rate; // Exchange rate to USD
+    float amount_usd; // Amount in USD
 } Transaction;
 
-typedef struct Node
-{
-    Transaction transaction;
-    struct Node *next;
-} Node;
-
-typedef struct
-{
-    Node *head;
-    Node *tail;
-} LinkedList;
-
-typedef struct
-{
-    Account account;
-    LinkedList transactions;
-} User;
+// Function prototypes
 
 int main()
 {
