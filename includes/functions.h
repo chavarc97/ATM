@@ -57,10 +57,10 @@ typedef struct {
 
 void exitProgram();
 void clearScreen();
-void login();
+User *logIn(ATM *atm);
 void logOut();
-void userScreen();
+void userScreen(User *user);
 void magicGame();
 int main();
-
+void registerUser(ATM *atm);
 #endif

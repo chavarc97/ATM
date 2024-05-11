@@ -43,7 +43,7 @@ TODO:
 
 int main() {
   int option, ret; // option and return value
-
+  ATM atm;
 mainMenu: // selection main menu
 
   clearScreen();
@@ -62,9 +62,14 @@ mainMenu: // selection main menu
   switch (option) {
   case 1:
     // log in to an existing account
+   
     break;
   case 2:
     // create a new account
+    
+    atm.num_users = 0;
+    registerUser(&atm);
+    getchar();
     break;
   case 3:
     // exit
